@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!--    创建对象，bean标签，id和class-->
+    <bean id="axb" class="com.example.ioc.demo.Emp">
+        <!--        set方法注入属性，property标签，name和value-->
+        <property name="ename" value="cyx"></property>
+        <property name="gender" value="man"></property>
+        <!--        内部bean方式-->
+        <!--        name里的值要跟变量名一致-->
+        <!--        dept是类类型-->
+        <!--        很好理解，主类里面加载个类类型的属性，该类型先是属性，为property，再是类，为bean-->
+        <property name="dept">
+            <!--            id里的值则自定义-->
+            <bean id="dpt00" class="com.example.ioc.demo.Dept">
+                <property name="dname" value="love"></property>
+            </bean>
+        </property>
+    </bean>
+
+
+
+    <!--    第一种级联赋值方法与内部bean的区别是：
+    内部bean在property里创建了name之后就结束，之后在property里创建bean标签加载对象并注入属性，最后再终结property标签；
+    级联赋值则创建property标签后，加载name和ref后结束property标签，然后在上一个bean结束之后的地方另外再创建bean标签加载对象并注入属性。-->
+
+
+
+    <!--    创建对象，bean标签，id和class-->
+    <bean id="ccc" class="com.example.ioc.demo.Emp">
+        <!--        构造器方法注入属性，constructor-arg标签，name和value-->
+        <constructor-arg name="ename" value="yxm"></constructor-arg>
+        <constructor-arg name="gender" value="woman"></constructor-arg>
+        <!--        级联赋值的第一种写法-->
+        <!--        注意ref里的值要与前面的name里的值一致-->
+        <!--    dept是类类型-->
+        <!--        同理，先是属性，为property，再是类，为bean，bean在外面创建，用ref-->
+        <property name="dept" ref="dept"></property>
+    </bean>
+
+    <!--    注意id值要与前面的ref里的值一致-->
+    <bean id="dept" class="com.example.ioc.demo.Dept">
+        <property name="dname" value="you"></property>
+    </bean>
+
+
+</beans>
