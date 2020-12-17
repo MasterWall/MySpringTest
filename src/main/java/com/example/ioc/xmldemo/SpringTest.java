@@ -1,4 +1,4 @@
-package com.example.ioc.demo;
+package com.example.ioc.xmldemo;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

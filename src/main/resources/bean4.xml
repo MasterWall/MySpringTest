@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--创建对象，注意id中的名称为创建的类的对象的首字母小写形式-->
+    <bean id="book" class="com.example.aop.aopxml.Book"></bean>
+    <bean id="bookProxy" class="com.example.aop.aopxml.BookProxy"></bean>
+
+    <!--配置aop-->
+    <aop:config>
+
+        <!--配置切入点表达式，被增强类User-->
+        <aop:pointcut id="p" expression="execution(public * com.example.aop.aopxml.Book.buy(..))"/>
+
+        <!--配置切面，增强类UserProxy，这里也要首字母小写-->
+        <aop:aspect ref="bookProxy">
+            <!--增强作用在具体的方法上-->
+            <aop:before method="before" pointcut-ref="p"></aop:before>
+        </aop:aspect>
+
+    </aop:config>
+
+
+</beans>

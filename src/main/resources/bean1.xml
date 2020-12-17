@@ -6,7 +6,7 @@
 
 
     <!--    创建对象，bean标签，id和class-->
-    <bean id="axb" class="com.example.ioc.demo.Emp">
+    <bean id="axb" class="com.example.ioc.xmldemo.Emp">
         <!--        set方法注入属性，property标签，name和value-->
         <property name="ename" value="cyx"></property>
         <property name="gender" value="man"></property>
@@ -16,7 +16,7 @@
         <!--        很好理解，主类里面加载个类类型的属性，该类型先是属性，为property，再是类，为bean-->
         <property name="dept">
             <!--            id里的值则自定义-->
-            <bean id="dpt00" class="com.example.ioc.demo.Dept">
+            <bean id="dpt00" class="com.example.ioc.xmldemo.Dept">
                 <property name="dname" value="love"></property>
             </bean>
         </property>
@@ -31,7 +31,7 @@
 
 
     <!--    创建对象，bean标签，id和class-->
-    <bean id="ccc" class="com.example.ioc.demo.Emp">
+    <bean id="ccc" class="com.example.ioc.xmldemo.Emp">
         <!--        构造器方法注入属性，constructor-arg标签，name和value-->
         <constructor-arg name="ename" value="yxm"></constructor-arg>
         <constructor-arg name="gender" value="woman"></constructor-arg>
@@ -43,7 +43,7 @@
     </bean>
 
     <!--    注意id值要与前面的ref里的值一致-->
-    <bean id="dept" class="com.example.ioc.demo.Dept">
+    <bean id="dept" class="com.example.ioc.xmldemo.Dept">
         <property name="dname" value="you"></property>
     </bean>
 

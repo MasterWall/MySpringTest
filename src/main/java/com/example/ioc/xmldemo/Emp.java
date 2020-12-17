@@ -1,4 +1,4 @@
-package com.example.ioc.demo;
+package com.example.ioc.xmldemo;
 
 /**
  * @author cyx
